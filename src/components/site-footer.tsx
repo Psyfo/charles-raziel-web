@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Mark } from "@/components/logo";
+import { Reveal } from "@/components/reveal";
 
 export function SiteFooter({
   locale,
@@ -28,7 +29,7 @@ export function SiteFooter({
   return (
     <footer className="border-t border-ink-700 bg-ink-900">
       <div className="mx-auto max-w-[1400px] px-[clamp(20px,6vw,72px)] py-16">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <Reveal className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3 text-brass-500">
               <Mark className="h-10 w-10" />
@@ -67,7 +68,7 @@ export function SiteFooter({
           <FooterCol title={dict.footer.locationTitle}>
             <span className="text-bone-400">{dict.site.location}</span>
           </FooterCol>
-        </div>
+        </Reveal>
 
         <div className="mt-16 flex flex-col gap-2 border-t border-ink-700 pt-8 text-[12px] uppercase tracking-[0.18em] text-bone-600 sm:flex-row sm:items-center sm:justify-between">
           <span>

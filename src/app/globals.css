@@ -123,3 +123,29 @@ a {
     transform: translateX(-50%);
   }
 }
+
+.cr-fade {
+  animation: cr-fade 0.5s var(--ease-reveal) both;
+}
+@keyframes cr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cr-page-in {
+  animation: cr-page-in 0.5s var(--ease-reveal) both;
+}
+@keyframes cr-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
