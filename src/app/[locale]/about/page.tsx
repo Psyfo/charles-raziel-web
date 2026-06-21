@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { Mark } from "@/components/logo";
+import Image from "next/image";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
 
@@ -37,9 +37,15 @@ export default async function AboutPage({
       </h1>
 
       <div className="mt-16 grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-ink-700 bg-gradient-to-br from-ink-600 via-ink-800 to-ink-900">
-          <div className="absolute -left-[15%] top-[10%] h-2/3 w-2/3 rounded-full bg-brass-500/15 blur-3xl" />
-          <Mark className="absolute bottom-6 right-6 h-12 w-12 text-brass-500/40" />
+        <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-ink-700">
+          <Image
+            src="/images/portrait-about.jpg"
+            alt="Charles Raziel"
+            fill
+            sizes="(min-width: 768px) 45vw, 90vw"
+            className="object-cover"
+            priority
+          />
         </div>
         <div>
           <p className="font-sans text-lg leading-relaxed text-bone-300">
