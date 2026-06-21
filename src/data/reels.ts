@@ -22,41 +22,49 @@ export type Reel = {
   title: string;
   category: CategoryKey;
   durationSeconds: number;
-  /** Placeholder video — to be replaced with Cloudflare Stream IDs and real masters. */
-  youtubeId: string;
   featured?: boolean;
+  /** Placeholder dance thumbnail (royalty-free) until real poster frames arrive. */
+  thumb: string;
+  /** Placeholder dance clip (royalty-free) until Charles's masters are re-hosted. */
+  video: string;
 };
 
-// NOTE: titles are Charles's real work; the underlying video is a placeholder
-// (a single stable public clip) until the master files are supplied.
-const PLACEHOLDER = "aqz-KE-bpKQ";
+type RawReel = Omit<Reel, "thumb" | "video">;
 
-export const reels: Reel[] = [
-  { id: "christmas-day", title: "Christmas Day", category: "events", durationSeconds: 117, youtubeId: PLACEHOLDER, featured: true },
-  { id: "express-choreo", title: "E.X.P.R.E.S.S. Choreo by @minx.dance.group", category: "choreographies", durationSeconds: 111, youtubeId: PLACEHOLDER, featured: true },
-  { id: "day-in-the-park", title: "A Day in the Park with @leninawtf", category: "locations", durationSeconds: 109, youtubeId: PLACEHOLDER },
-  { id: "beauty-and-elegance", title: "Beauty and Elegance", category: "modelling", durationSeconds: 100, youtubeId: PLACEHOLDER, featured: true },
-  { id: "new-years-day-2026", title: "New Year's Day 2026", category: "events", durationSeconds: 98, youtubeId: PLACEHOLDER },
-  { id: "high-heels-renata", title: "High Heels Choreography with Renata", category: "choreographies", durationSeconds: 80, youtubeId: PLACEHOLDER, featured: true },
-  { id: "miss-right-runway", title: "Miss Right 2026 — Runway Highlights", category: "events", durationSeconds: 77, youtubeId: PLACEHOLDER, featured: true },
-  { id: "twerk-power", title: "Twerk & Power", category: "choreographies", durationSeconds: 76, youtubeId: PLACEHOLDER },
-  { id: "geekd-up", title: "Geek'd Up by Femme + Core Crew at Coredhlab", category: "workshops", durationSeconds: 72, youtubeId: PLACEHOLDER },
-  { id: "festive-comedic", title: "A Festive and Comedic Time", category: "events", durationSeconds: 68, youtubeId: PLACEHOLDER },
-  { id: "labyrinth", title: "Labyrinth Under the Market", category: "locations", durationSeconds: 65, youtubeId: PLACEHOLDER, featured: true },
-  { id: "twerk-paula", title: "Twerk Choreography by @Paula.Arendasova", category: "choreographies", durationSeconds: 62, youtubeId: PLACEHOLDER },
-  { id: "strain-rate", title: "Strain Rate Concert", category: "concert", durationSeconds: 51, youtubeId: PLACEHOLDER, featured: true },
-  { id: "nigy-boy-hush", title: "Nigy Boy — Hush, by @lufkalufka", category: "choreographies", durationSeconds: 48, youtubeId: PLACEHOLDER },
-  { id: "model-diana", title: "Model Work with Diana Surovčíková", category: "modelling", durationSeconds: 48, youtubeId: PLACEHOLDER },
-  { id: "contemporary-stela", title: "Contemporary by Stela", category: "choreographies", durationSeconds: 48, youtubeId: PLACEHOLDER },
-  { id: "miss-right-wholesome", title: "Miss Right 2026 — Wholesome Moments", category: "events", durationSeconds: 47, youtubeId: PLACEHOLDER },
-  { id: "joel-brno", title: "Joel // Active Immortals, First Time in Brno", category: "workshops", durationSeconds: 46, youtubeId: PLACEHOLDER },
-  { id: "model-sofia", title: "Model Work with Sofia Klymko", category: "modelling", durationSeconds: 44, youtubeId: PLACEHOLDER },
-  { id: "miss-right-hype", title: "Miss Right 2026 — Hype Montage", category: "events", durationSeconds: 40, youtubeId: PLACEHOLDER },
-  { id: "model-katerina", title: "Model Work with Kateřina Přerovská", category: "modelling", durationSeconds: 39, youtubeId: PLACEHOLDER },
-  { id: "model-barbora-p", title: "Model Work with Barbora Prosecká", category: "modelling", durationSeconds: 30, youtubeId: PLACEHOLDER },
-  { id: "model-barbora-sofia", title: "Model Work with Barbora and Sofia", category: "modelling", durationSeconds: 30, youtubeId: PLACEHOLDER },
-  { id: "miss-right-contestants", title: "Miss Right 2026 — Contestants", category: "events", durationSeconds: 26, youtubeId: PLACEHOLDER },
+// NOTE: titles/categories/durations are Charles's real work. Thumbnails and clips are
+// royalty-free dance placeholders (Pexels) until his masters land on Cloudflare Stream.
+const rawReels: RawReel[] = [
+  { id: "christmas-day", title: "Christmas Day", category: "events", durationSeconds: 117, featured: true },
+  { id: "express-choreo", title: "E.X.P.R.E.S.S. Choreo by @minx.dance.group", category: "choreographies", durationSeconds: 111, featured: true },
+  { id: "day-in-the-park", title: "A Day in the Park with @leninawtf", category: "locations", durationSeconds: 109 },
+  { id: "beauty-and-elegance", title: "Beauty and Elegance", category: "modelling", durationSeconds: 100, featured: true },
+  { id: "new-years-day-2026", title: "New Year's Day 2026", category: "events", durationSeconds: 98 },
+  { id: "high-heels-renata", title: "High Heels Choreography with Renata", category: "choreographies", durationSeconds: 80, featured: true },
+  { id: "miss-right-runway", title: "Miss Right 2026 — Runway Highlights", category: "events", durationSeconds: 77, featured: true },
+  { id: "twerk-power", title: "Twerk & Power", category: "choreographies", durationSeconds: 76 },
+  { id: "geekd-up", title: "Geek'd Up by Femme + Core Crew at Coredhlab", category: "workshops", durationSeconds: 72 },
+  { id: "festive-comedic", title: "A Festive and Comedic Time", category: "events", durationSeconds: 68 },
+  { id: "labyrinth", title: "Labyrinth Under the Market", category: "locations", durationSeconds: 65, featured: true },
+  { id: "twerk-paula", title: "Twerk Choreography by @Paula.Arendasova", category: "choreographies", durationSeconds: 62 },
+  { id: "strain-rate", title: "Strain Rate Concert", category: "concert", durationSeconds: 51, featured: true },
+  { id: "nigy-boy-hush", title: "Nigy Boy — Hush, by @lufkalufka", category: "choreographies", durationSeconds: 48 },
+  { id: "model-diana", title: "Model Work with Diana Surovčíková", category: "modelling", durationSeconds: 48 },
+  { id: "contemporary-stela", title: "Contemporary by Stela", category: "choreographies", durationSeconds: 48 },
+  { id: "miss-right-wholesome", title: "Miss Right 2026 — Wholesome Moments", category: "events", durationSeconds: 47 },
+  { id: "joel-brno", title: "Joel // Active Immortals, First Time in Brno", category: "workshops", durationSeconds: 46 },
+  { id: "model-sofia", title: "Model Work with Sofia Klymko", category: "modelling", durationSeconds: 44 },
+  { id: "miss-right-hype", title: "Miss Right 2026 — Hype Montage", category: "events", durationSeconds: 40 },
+  { id: "model-katerina", title: "Model Work with Kateřina Přerovská", category: "modelling", durationSeconds: 39 },
+  { id: "model-barbora-p", title: "Model Work with Barbora Prosecká", category: "modelling", durationSeconds: 30 },
+  { id: "model-barbora-sofia", title: "Model Work with Barbora and Sofia", category: "modelling", durationSeconds: 30 },
+  { id: "miss-right-contestants", title: "Miss Right 2026 — Contestants", category: "events", durationSeconds: 26 },
 ];
+
+export const reels: Reel[] = rawReels.map((r, i) => ({
+  ...r,
+  thumb: `/images/reels/reel-${String((i % 18) + 1).padStart(2, "0")}.jpg`,
+  video: `/videos/sample-${(i % 3) + 1}.mp4`,
+}));
 
 export function formatDuration(seconds: number): string {
   const m = Math.floor(seconds / 60);

@@ -1,10 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { reels, categoryLabel } from "@/data/reels";
 import { ReelCard } from "@/components/reel-card";
+import { Reveal } from "@/components/reveal";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
+const SERVICE_IMAGES = [
+  "/images/stills/photo-05.jpg",
+  "/images/reels/reel-08.jpg",
+  "/images/reels/reel-12.jpg",
+];
 
 export default async function HomePage({
   params,
@@ -20,8 +27,30 @@ export default async function HomePage({
     <>
       {/* Hero */}
       <section className="relative flex min-h-screen items-center overflow-hidden">
+        <Image
+          src="/images/hero-poster.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-70"
+        />
+        <video
+          className="absolute inset-0 h-full w-full object-cover opacity-70 motion-reduce:hidden"
+          src="/videos/hero-dance.mp4"
+          poster="/images/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-900 via-ink-900/75 to-ink-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-900/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/10 to-transparent" />
         <div className="pointer-events-none absolute -right-[10%] top-[8%] h-[55vh] w-[55vh] rounded-full bg-brass-500/15 blur-[120px]" />
         <div className="pointer-events-none absolute -left-[8%] bottom-[2%] h-[40vh] w-[40vh] rounded-full bg-brass-700/10 blur-[120px]" />
+
         <div className={`relative mx-auto w-full max-w-[1400px] ${PAD} pt-32`}>
           <p className="cr-rise font-grotesque text-[12px] uppercase tracking-[0.32em] text-brass-400">
             {dict.site.descriptor} · {dict.site.location}
@@ -60,39 +89,42 @@ export default async function HomePage({
 
       {/* Selected work */}
       <section className={`mx-auto max-w-[1400px] ${PAD} py-24`}>
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
-              {dict.home.featuredKicker}
-            </p>
-            <h2 className="mt-3 font-display text-4xl text-bone-100 sm:text-5xl">
-              {dict.home.featuredTitle}
-            </h2>
+        <Reveal>
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
+                {dict.home.featuredKicker}
+              </p>
+              <h2 className="mt-3 font-display text-4xl text-bone-100 sm:text-5xl">
+                {dict.home.featuredTitle}
+              </h2>
+            </div>
+            <Link
+              href={`/${locale}/films`}
+              className="hidden shrink-0 font-grotesque text-[12px] uppercase tracking-[0.18em] text-bone-400 transition-colors hover:text-brass-300 sm:block"
+            >
+              {dict.home.featuredAll} →
+            </Link>
           </div>
-          <Link
-            href={`/${locale}/films`}
-            className="hidden shrink-0 font-grotesque text-[12px] uppercase tracking-[0.18em] text-bone-400 transition-colors hover:text-brass-300 sm:block"
-          >
-            {dict.home.featuredAll} →
-          </Link>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {featured.map((reel, i) => (
-            <ReelCard
-              key={reel.id}
-              reel={reel}
-              index={i}
-              categoryLabel={categoryLabel(reel.category, locale)}
-              playLabel={dict.films.play}
-            />
+            <Reveal key={reel.id} delay={(i % 4) * 80}>
+              <ReelCard
+                reel={reel}
+                index={i}
+                categoryLabel={categoryLabel(reel.category, locale)}
+                playLabel={dict.films.play}
+              />
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* Ethos */}
       <section className="border-t border-ink-700">
-        <div className={`mx-auto grid max-w-[1400px] gap-10 ${PAD} py-28 md:grid-cols-2`}>
+        <Reveal className={`mx-auto grid max-w-[1400px] gap-10 ${PAD} py-28 md:grid-cols-2`}>
           <div>
             <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
               {dict.home.ethosKicker}
@@ -104,39 +136,50 @@ export default async function HomePage({
           <p className="self-end font-sans text-lg leading-relaxed text-bone-300">
             {dict.home.ethosBody}
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Services teaser */}
       <section className="border-t border-ink-700">
         <div className={`mx-auto max-w-[1400px] ${PAD} py-24`}>
-          <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
-            {dict.home.servicesKicker}
-          </p>
-          <h2 className="mt-3 font-display text-4xl text-bone-100 sm:text-5xl">
-            {dict.home.servicesTitle}
-          </h2>
+          <Reveal>
+            <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
+              {dict.home.servicesKicker}
+            </p>
+            <h2 className="mt-3 font-display text-4xl text-bone-100 sm:text-5xl">
+              {dict.home.servicesTitle}
+            </h2>
+          </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {dict.services.items.map((s, i) => (
-              <div
-                key={s.name}
-                className="flex flex-col justify-between rounded-lg border border-ink-700 bg-ink-800 p-8 transition-colors hover:border-brass-500/50"
-              >
-                <div>
-                  <span className="font-grotesque text-[12px] tracking-[0.2em] text-brass-500">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-4 font-display text-2xl text-bone-100">
-                    {s.name}
-                  </h3>
-                  <p className="mt-4 text-[15px] leading-relaxed text-bone-400">
-                    {s.summary}
-                  </p>
+              <Reveal key={s.name} delay={i * 90}>
+                <div className="group flex h-full flex-col overflow-hidden rounded-lg border border-ink-700 bg-ink-800 transition-colors hover:border-brass-500/50">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={SERVICE_IMAGES[i % SERVICE_IMAGES.length]}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-800 via-ink-800/30 to-transparent" />
+                    <span className="absolute left-5 top-4 font-grotesque text-[12px] tracking-[0.2em] text-brass-300">
+                      0{i + 1}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col justify-between p-7">
+                    <div>
+                      <h3 className="font-display text-2xl text-bone-100">{s.name}</h3>
+                      <p className="mt-3 text-[15px] leading-relaxed text-bone-400">
+                        {s.summary}
+                      </p>
+                    </div>
+                    <p className="mt-6 font-grotesque text-[12px] uppercase tracking-[0.18em] text-bone-500">
+                      {s.price}
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-8 font-grotesque text-[12px] uppercase tracking-[0.18em] text-bone-500">
-                  {s.price}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -144,7 +187,7 @@ export default async function HomePage({
 
       {/* CTA — light editorial band */}
       <section className="bg-bone-50 text-ink-900">
-        <div className={`mx-auto max-w-[1400px] ${PAD} py-28 text-center`}>
+        <Reveal className={`mx-auto max-w-[1400px] ${PAD} py-28 text-center`}>
           <h2 className="mx-auto max-w-[18ch] font-display text-4xl leading-tight sm:text-6xl">
             {dict.home.ctaTitle}
           </h2>
@@ -157,7 +200,7 @@ export default async function HomePage({
           >
             {dict.home.ctaButton}
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );
