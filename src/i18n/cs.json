@@ -82,7 +82,13 @@
     "message": "Zpráva",
     "send": "Odeslat zprávu",
     "or": "nebo",
-    "emailDirect": "Napsat e-mail přímo"
+    "emailDirect": "Napsat e-mail přímo",
+    "errorName": "Zadejte prosím své jméno.",
+    "errorEmail": "Zadejte prosím platnou e-mailovou adresu.",
+    "errorMessage": "Napište prosím trochu více — alespoň 10 znaků.",
+    "successTitle": "Zpráva je připravena",
+    "successBody": "Děkuji, {name}. Mám vaše údaje a brzy se vám ozvu.",
+    "successClose": "Zavřít"
   },
   "book": {
     "kicker": "Rezervace",

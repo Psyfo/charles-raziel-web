@@ -52,6 +52,13 @@ export default async function ContactPage({
               email: dict.contact.email,
               message: dict.contact.message,
               send: dict.contact.send,
+              errorName: dict.contact.errorName,
+              errorEmail: dict.contact.errorEmail,
+              errorMessage: dict.contact.errorMessage,
+              successTitle: dict.contact.successTitle,
+              successBody: dict.contact.successBody,
+              successClose: dict.contact.successClose,
+              emailDirect: dict.contact.emailDirect,
             }}
           />
         </div>
