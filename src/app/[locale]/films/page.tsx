@@ -3,6 +3,7 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { reels } from "@/data/reels";
 import { ReelGrid } from "@/components/reel-grid";
+import { Reveal } from "@/components/reveal";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
 
@@ -28,13 +29,15 @@ export default async function FilmsPage({
 
   return (
     <div className={`mx-auto max-w-[1400px] ${PAD} pb-24 pt-36`}>
-      <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
-        {dict.films.kicker}
-      </p>
-      <h1 className="mt-4 font-display leading-none text-bone-100" style={{ fontSize: "clamp(48px, 9vw, 120px)" }}>
-        {dict.films.title}
-      </h1>
-      <p className="mt-6 max-w-xl text-lg text-bone-400">{dict.films.intro}</p>
+      <Reveal>
+        <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
+          {dict.films.kicker}
+        </p>
+        <h1 className="mt-4 font-display leading-none text-bone-100" style={{ fontSize: "clamp(48px, 9vw, 120px)" }}>
+          {dict.films.title}
+        </h1>
+        <p className="mt-6 max-w-xl text-lg text-bone-400">{dict.films.intro}</p>
+      </Reveal>
 
       <div className="mt-14">
         <ReelGrid
@@ -42,6 +45,7 @@ export default async function FilmsPage({
           locale={locale}
           allLabel={dict.films.all}
           playLabel={dict.films.play}
+          closeLabel={dict.films.close}
         />
       </div>
     </div>

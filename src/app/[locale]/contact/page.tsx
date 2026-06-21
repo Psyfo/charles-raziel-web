@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { ContactForm } from "@/components/contact-form";
+import { Reveal } from "@/components/reveal";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
 
@@ -27,7 +28,7 @@ export default async function ContactPage({
   return (
     <div className={`mx-auto max-w-[1400px] ${PAD} pb-28 pt-36`}>
       <div className="grid gap-14 md:grid-cols-2">
-        <div>
+        <Reveal>
           <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
             {dict.contact.kicker}
           </p>
@@ -43,7 +44,7 @@ export default async function ContactPage({
           <p className="mt-10 font-grotesque text-[12px] uppercase tracking-[0.2em] text-bone-500">
             {dict.site.location}
           </p>
-        </div>
+        </Reveal>
 
         <div className="md:pt-10">
           <ContactForm
