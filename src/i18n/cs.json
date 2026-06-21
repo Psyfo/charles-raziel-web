@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "films": "Filmy",
+    "stills": "Fotografie",
+    "about": "O mně",
+    "services": "Služby",
+    "contact": "Kontakt",
+    "book": "Rezervovat"
+  },
+  "site": {
+    "name": "Charles Raziel",
+    "descriptor": "Video & kinematografie",
+    "location": "Brno, Česká republika"
+  },
+  "home": {
+    "heroLine": "Vizuální vyprávění skrze pohyb, stín a atmosféru.",
+    "heroSub": "Umělecká videotvorba zaměřená na tanec, performance a výrazné prostory.",
+    "watchReels": "Prohlédnout videa",
+    "bookCta": "Rezervovat konzultaci",
+    "featuredKicker": "Vybraná tvorba",
+    "featuredTitle": "Nejnovější videa",
+    "featuredAll": "Zobrazit všechny filmy",
+    "ethosKicker": "Můj přístup",
+    "ethosTitle": "Má práce stojí na důvěře, spolupráci a respektu.",
+    "ethosBody": "Nejsilnější vizuál vzniká v příjemném a otevřeném tvůrčím prostředí. Každý projekt začíná pochopením vaší představy a vytvořením prostoru, kde se cítíte bezpečně, podpořeně a sebejistě.",
+    "servicesKicker": "Co nabízím",
+    "servicesTitle": "Služby",
+    "ctaTitle": "Pojďme vytvořit něco, co stojí za podívání.",
+    "ctaBody": "K dispozici pro natáčení na místě po celé střední Evropě.",
+    "ctaButton": "Začít projekt"
+  },
+  "films": {
+    "kicker": "Portfolio",
+    "title": "Filmy",
+    "intro": "Krátká kinematografická tvorba v oblasti tance, performance, modelingu a akcí.",
+    "all": "Vše",
+    "play": "Přehrát video",
+    "close": "Zavřít"
+  },
+  "stills": {
+    "kicker": "Fotografie",
+    "title": "Fotografie",
+    "intro": "Editoriální fotografie a snímky z natáčení.",
+    "note": "Nová galerie se připravuje. Pro kompletní set se mi ozvěte."
+  },
+  "about": {
+    "kicker": "Kdo jsem",
+    "title": "Umělec před kamerou i za ní.",
+    "body": "Jsem videograf, tanečník a tvůrce obsahu z Brna. Díky zkušenostem z obou stran objektivu přistupuji ke každému projektu spolupracujícím a intuitivním způsobem a vyprávím vizuální příběhy skrze kompozici, pohyb a atmosféru. Můžete očekávat profesionální, ale uvolněné prostředí a video na míru každému klientovi.",
+    "reach": "K dispozici pro natáčení na místě po celé střední Evropě."
+  },
+  "services": {
+    "kicker": "Co nabízím",
+    "title": "Služby",
+    "intro": "Každý balíček zahrnuje konzultaci, plánování, natáčení a kompletní postprodukci s profesionálním barevným laděním.",
+    "priceNote": "Konečná cena závisí na délce natáčení, rozsahu a výstupech.",
+    "bookCta": "Rezervovat přes konzultaci",
+    "items": [
+      {
+        "name": "Modeling a umělecké focení",
+        "summary": "Kreativní video v uměleckém prostředí a pečlivě zvolených kulisách, od konzultace až po kompletně sladěný střih.",
+        "price": "od 2 000 Kč"
+      },
+      {
+        "name": "Workshopy a lekce",
+        "summary": "Natáčení na místě, které zachytí energii a atmosféru taneční lekce či workshopu, veškerá technika s sebou.",
+        "price": "na vyžádání"
+      },
+      {
+        "name": "Tanec a choreografie",
+        "summary": "Spolupracující přístup jeden na jednoho pro umělecká taneční a choreografická videa pro sociální sítě.",
+        "price": "od 1 500 Kč"
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Ozvěte se",
+    "title": "Pojďme si promluvit o vašem projektu.",
+    "body": "Napište mi pár slov o tom, co máte v plánu, a brzy se vám ozvu.",
+    "name": "Jméno",
+    "email": "E-mail",
+    "message": "Zpráva",
+    "send": "Odeslat zprávu",
+    "or": "nebo",
+    "emailDirect": "Napsat e-mail přímo"
+  },
+  "book": {
+    "kicker": "Rezervace",
+    "title": "Rezervujte si konzultaci.",
+    "body": "Rezervujte si bezplatnou konzultaci nebo video službu. V tuto chvíli není vyžadována žádná online platba; platba se domlouvá přímo po potvrzení rezervace.",
+    "embedNote": "Rezervační kalendář se zobrazí zde.",
+    "terms": "Rezervací souhlasíte s platnými obchodními podmínkami."
+  },
+  "terms": {
+    "kicker": "Právní",
+    "title": "Obchodní podmínky",
+    "body": "Obchodní podmínky budou zveřejněny zde."
+  },
+  "footer": {
+    "tagline": "Kinematografické video pro pohyb, stín a atmosféru.",
+    "navTitle": "Procházet",
+    "followTitle": "Sledovat",
+    "locationTitle": "Sídlo",
+    "rights": "Všechna práva vyhrazena."
+  }
+}

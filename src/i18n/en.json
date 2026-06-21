@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "films": "Films",
+    "stills": "Stills",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "book": "Book now"
+  },
+  "site": {
+    "name": "Charles Raziel",
+    "descriptor": "Video & Cinematography",
+    "location": "Brno, Czech Republic"
+  },
+  "home": {
+    "heroLine": "Visual storytelling through movement, shadow, and atmosphere.",
+    "heroSub": "Artistic video work focused on dance, performance, and expressive spaces.",
+    "watchReels": "View the reels",
+    "bookCta": "Book a consultation",
+    "featuredKicker": "Selected work",
+    "featuredTitle": "Recent reels",
+    "featuredAll": "See all films",
+    "ethosKicker": "My ethos",
+    "ethosTitle": "My work is built on trust, collaboration, and respect.",
+    "ethosBody": "The strongest visuals come from a comfortable, open creative environment. Every project begins with understanding your vision and building a space where you feel safe, supported, and confident to express yourself.",
+    "servicesKicker": "What I offer",
+    "servicesTitle": "Services",
+    "ctaTitle": "Let's make something worth watching.",
+    "ctaBody": "Available for on-location filming across Central Europe.",
+    "ctaButton": "Start a project"
+  },
+  "films": {
+    "kicker": "Portfolio",
+    "title": "Films",
+    "intro": "Short-form cinematic work in dance, performance, modelling, and events.",
+    "all": "All",
+    "play": "Play reel",
+    "close": "Close"
+  },
+  "stills": {
+    "kicker": "Photography",
+    "title": "Stills",
+    "intro": "Editorial photography and frames pulled from the films.",
+    "note": "A new gallery is on the way. Reach out to see the full set."
+  },
+  "about": {
+    "kicker": "Who I am",
+    "title": "An artist behind and in front of the camera.",
+    "body": "I am a videographer, dancer, and content creator based in Brno, Czech Republic. With experience on both sides of the lens, I bring a collaborative, intuitive approach to every project, telling visual stories through composition, movement, and atmosphere. Expect a professional yet relaxed environment and video work tailored to each client.",
+    "reach": "Available for on-location filming across Central Europe."
+  },
+  "services": {
+    "kicker": "What I offer",
+    "title": "Services",
+    "intro": "Each package includes consultation, planning, filming, and full post-production with professional colour grading.",
+    "priceNote": "Final pricing depends on shoot duration, scope, and deliverables.",
+    "bookCta": "Book via consultation",
+    "items": [
+      {
+        "name": "Modelling & artistic shoots",
+        "summary": "Creative video shoots in artistic environments and curated backdrops, from consultation through to a fully graded edit.",
+        "price": "from CZK 2,000"
+      },
+      {
+        "name": "Workshops & classes",
+        "summary": "On-location filming that captures the energy and atmosphere of a dance class or workshop, all equipment brought to you.",
+        "price": "on request"
+      },
+      {
+        "name": "Dance & choreography",
+        "summary": "A collaborative, one-on-one approach for artistic dance and choreography videos made for social platforms.",
+        "price": "from CZK 1,500"
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Get in touch",
+    "title": "Let's talk about your project.",
+    "body": "Tell me a little about what you have in mind and I'll be in touch shortly.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "or": "or",
+    "emailDirect": "Email directly"
+  },
+  "book": {
+    "kicker": "Booking",
+    "title": "Reserve a consultation.",
+    "body": "Book a free consultation or a video service. No online payment is required at this stage; payment is arranged directly after booking confirmation.",
+    "embedNote": "The booking calendar will appear here.",
+    "terms": "By booking, you agree to the applicable Terms & Conditions."
+  },
+  "terms": {
+    "kicker": "Legal",
+    "title": "Terms & Conditions",
+    "body": "Terms and conditions will be published here."
+  },
+  "footer": {
+    "tagline": "Cinematic video for movement, shadow, and atmosphere.",
+    "navTitle": "Explore",
+    "followTitle": "Follow",
+    "locationTitle": "Based in",
+    "rights": "All rights reserved."
+  }
+}
