@@ -2,7 +2,7 @@
 
 Rebuild of [charlesrazielvideography.com](https://www.charlesrazielvideography.com) off Squarespace
 into a custom, cinematic, bilingual portfolio. Companion docs: [brand.md](./brand.md) ·
-audit in [`../scrape/notes/findings.md`](../scrape/notes/findings.md).
+[admin.md](./admin.md) (CMS/admin/email plan).
 
 ## 1. Goals
 
@@ -19,15 +19,15 @@ audit in [`../scrape/notes/findings.md`](../scrape/notes/findings.md).
 | ----- | -------- |
 | Framework | **Next.js** (App Router) |
 | Hosting | **Vercel** — launch on `charlesrazielvideography.vercel.app`; custom domain DNS repointed later by client. Pro ($20/mo) at launch. |
-| CMS | **Sanity** (free tier), Studio embedded at `/studio`, **custom-themed** |
-| Styling | Tailwind + CSS variables from [brand.md](./brand.md) |
+| CMS | **Sanity** (free tier) — bespoke **custom admin** dashboard + themed **Studio at `/studio` as fallback**. Route-group split `(public)`/`(admin)`. See [admin.md](./admin.md). |
+| Styling | Tailwind v4 + CSS variables from [brand.md](./brand.md) |
 | Type | Fraunces (display) · Archivo (structural) · Inter (text) — all via `next/font` |
-| i18n | **next-intl**, locale routing `/` (en) + `/cs` |
+| i18n | Lightweight `[locale]` segment (`/en`, `/cs`) + JSON dictionaries (no middleware) |
 | Video | **Cloudflare Stream** (re-host masters) — Bunny Stream as fallback |
 | Images | **Sanity image CDN** (responsive transforms, AVIF/WebP) |
 | Booking | **Acuity Scheduling** (embed, unchanged) |
 | Invoicing | **Zoho Invoice** (off-site, unchanged) |
-| Contact form | Serverless route + **Resend** (or Formspree) |
+| Contact form + transactional email | Serverless route + **ZeptoMail** (Zoho), branded templates |
 | Analytics | **Vercel Analytics** or **Plausible** |
 | Payments | **None online.** Future tips/deposits = a Stripe/Ko-fi link, not a platform. |
 
