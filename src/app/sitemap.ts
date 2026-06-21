@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
+import { collections } from "@/data/collections";
 
 const BASE = "https://charlesrazielvideography.vercel.app";
 const paths = [
@@ -11,6 +12,7 @@ const paths = [
   "/contact",
   "/book",
   "/terms",
+  ...collections.map((c) => `/stills/${c.slug}`),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

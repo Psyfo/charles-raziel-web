@@ -40,8 +40,10 @@
   "stills": {
     "kicker": "Photography",
     "title": "Stills",
-    "intro": "Editorial photography from recent shoots.",
-    "note": "A new gallery is on the way. Reach out to see the full set."
+    "intro": "Selected bodies of work, grouped by project and collaborator.",
+    "viewCollection": "View collection",
+    "photos": "photos",
+    "allCollections": "All collections"
   },
   "about": {
     "kicker": "Who I am",
