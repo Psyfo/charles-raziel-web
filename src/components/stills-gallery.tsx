@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { stills } from "@/data/stills";
 
@@ -75,7 +76,9 @@ export function StillsGallery({ closeLabel }: { closeLabel: string }) {
         ))}
       </div>
 
-      {open !== null && (
+      {open !== null &&
+        typeof document !== "undefined" &&
+        createPortal(
         <div
           className="fixed inset-0 z-[100] flex touch-none select-none flex-col bg-ink-900/96 backdrop-blur-md"
           onClick={() => setOpen(null)}
@@ -139,8 +142,9 @@ export function StillsGallery({ closeLabel }: { closeLabel: string }) {
           <p className="pb-6 text-center font-grotesque text-[10px] uppercase tracking-[0.22em] text-bone-600 sm:hidden">
             Swipe to browse
           </p>
-        </div>
-      )}
+        </div>,
+          document.body
+        )}
     </>
   );
 }
