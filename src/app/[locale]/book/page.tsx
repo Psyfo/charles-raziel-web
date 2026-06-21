@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { Reveal } from "@/components/reveal";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
 
@@ -26,16 +27,18 @@ export default async function BookPage({
 
   return (
     <div className={`mx-auto max-w-[1100px] ${PAD} pb-28 pt-36`}>
-      <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
-        {dict.book.kicker}
-      </p>
-      <h1
-        className="mt-4 max-w-[16ch] font-display leading-[1.02] text-bone-100"
-        style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
-      >
-        {dict.book.title}
-      </h1>
-      <p className="mt-6 max-w-xl text-lg text-bone-400">{dict.book.body}</p>
+      <Reveal>
+        <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
+          {dict.book.kicker}
+        </p>
+        <h1
+          className="mt-4 max-w-[16ch] font-display leading-[1.02] text-bone-100"
+          style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
+        >
+          {dict.book.title}
+        </h1>
+        <p className="mt-6 max-w-xl text-lg text-bone-400">{dict.book.body}</p>
+      </Reveal>
 
       <div className="mt-12 flex min-h-72 items-center justify-center rounded-lg border border-dashed border-ink-600 bg-ink-800/50 p-10 text-center">
         <p className="font-grotesque text-[12px] uppercase tracking-[0.2em] text-bone-500">

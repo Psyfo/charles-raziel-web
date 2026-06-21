@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import Image from "next/image";
+import { Reveal } from "@/components/reveal";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
 
@@ -26,17 +27,19 @@ export default async function AboutPage({
 
   return (
     <div className={`mx-auto max-w-[1400px] ${PAD} pb-28 pt-36`}>
-      <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
-        {dict.about.kicker}
-      </p>
-      <h1
-        className="mt-4 max-w-[18ch] font-display leading-[1.02] text-bone-100"
-        style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
-      >
-        {dict.about.title}
-      </h1>
+      <Reveal>
+        <p className="font-grotesque text-[12px] uppercase tracking-[0.28em] text-brass-400">
+          {dict.about.kicker}
+        </p>
+        <h1
+          className="mt-4 max-w-[18ch] font-display leading-[1.02] text-bone-100"
+          style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
+        >
+          {dict.about.title}
+        </h1>
+      </Reveal>
 
-      <div className="mt-16 grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center">
+      <Reveal className="mt-16 grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center">
         <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-ink-700">
           <Image
             src="/images/portrait-about.jpg"
@@ -55,7 +58,7 @@ export default async function AboutPage({
             {dict.about.reach}
           </p>
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 }

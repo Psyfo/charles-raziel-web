@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { reels, categoryLabel } from "@/data/reels";
-import { ReelCard } from "@/components/reel-card";
+import { reels } from "@/data/reels";
+import { ReelGrid } from "@/components/reel-grid";
 import { Reveal } from "@/components/reveal";
 
 const PAD = "px-[clamp(20px,6vw,72px)]";
@@ -23,8 +23,28 @@ export default async function HomePage({
   const dict = getDictionary(locale);
   const featured = reels.filter((r) => r.featured).slice(0, 8);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Charles Raziel — Video & Cinematography",
+    description: dict.home.heroSub,
+    image: "https://charlesrazielvideography.vercel.app/opengraph-image",
+    url: `https://charlesrazielvideography.vercel.app/${locale}`,
+    areaServed: "Central Europe",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Brno",
+      addressCountry: "CZ",
+    },
+    knowsLanguage: ["en", "cs"],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <section className="relative flex min-h-screen items-center overflow-hidden">
         <Image
@@ -108,17 +128,15 @@ export default async function HomePage({
           </div>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {featured.map((reel, i) => (
-            <Reveal key={reel.id} delay={(i % 4) * 80}>
-              <ReelCard
-                reel={reel}
-                index={i}
-                categoryLabel={categoryLabel(reel.category, locale)}
-                playLabel={dict.films.play}
-              />
-            </Reveal>
-          ))}
+        <div className="mt-12">
+          <ReelGrid
+            reels={featured}
+            locale={locale}
+            allLabel={dict.films.all}
+            playLabel={dict.films.play}
+            closeLabel={dict.films.close}
+            showFilter={false}
+          />
         </div>
       </section>
 
