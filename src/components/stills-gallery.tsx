@@ -3,20 +3,25 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { stills } from "@/data/stills";
 
-export function StillsGallery({ closeLabel }: { closeLabel: string }) {
+export function StillsGallery({
+  images,
+  closeLabel,
+}: {
+  images: string[];
+  closeLabel: string;
+}) {
   const [open, setOpen] = useState<number | null>(null);
   const touchX = useRef<number | null>(null);
   const touchY = useRef<number | null>(null);
 
   const prev = useCallback(
-    () => setOpen((i) => (i === null ? null : (i + stills.length - 1) % stills.length)),
-    []
+    () => setOpen((i) => (i === null ? null : (i + images.length - 1) % images.length)),
+    [images.length]
   );
   const next = useCallback(
-    () => setOpen((i) => (i === null ? null : (i + 1) % stills.length)),
-    []
+    () => setOpen((i) => (i === null ? null : (i + 1) % images.length)),
+    [images.length]
   );
 
   useEffect(() => {
@@ -56,16 +61,16 @@ export function StillsGallery({ closeLabel }: { closeLabel: string }) {
   return (
     <>
       <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
-        {stills.map((s, i) => (
+        {images.map((src, i) => (
           <button
-            key={s.src}
+            key={src}
             type="button"
             onClick={() => setOpen(i)}
             className="group relative aspect-[3/4] overflow-hidden rounded-lg bg-ink-800"
             aria-label={`Open photograph ${i + 1}`}
           >
             <Image
-              src={s.src}
+              src={src}
               alt={`Photography by Charles Raziel — ${i + 1}`}
               fill
               sizes="(min-width: 768px) 33vw, 50vw"
@@ -79,70 +84,51 @@ export function StillsGallery({ closeLabel }: { closeLabel: string }) {
       {open !== null &&
         typeof document !== "undefined" &&
         createPortal(
-        <div
-          className="fixed inset-0 z-[100] flex touch-none select-none flex-col bg-ink-900/96 backdrop-blur-md"
-          onClick={() => setOpen(null)}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="flex items-center justify-between px-5 py-5 sm:px-8">
-            <span className="font-grotesque text-[12px] uppercase tracking-[0.2em] text-bone-400">
-              {String(open + 1).padStart(2, "0")} / {String(stills.length).padStart(2, "0")}
-            </span>
-            <button
-              type="button"
-              onClick={() => setOpen(null)}
-              className="font-grotesque text-[12px] uppercase tracking-[0.18em] text-bone-300 transition-colors hover:text-brass-300"
-            >
-              {closeLabel}
-            </button>
-          </div>
-
-          <div className="relative flex flex-1 items-center justify-center gap-4 px-4 pb-8 sm:gap-8 sm:px-8">
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                prev();
-              }}
-              className={arrow}
-              aria-label="Previous"
-            >
-              ‹
-            </button>
-            <div
-              className="relative h-full w-full max-w-3xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                key={open}
-                src={stills[open].src}
-                alt={`Photography by Charles Raziel — ${open + 1}`}
-                fill
-                sizes="90vw"
-                className="cr-fade object-contain"
-                priority
-              />
+          <div
+            className="cr-overlay-in fixed inset-0 z-[100] flex touch-none select-none flex-col bg-ink-900/96 backdrop-blur-md"
+            onClick={() => setOpen(null)}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="flex items-center justify-between px-5 py-5 sm:px-8">
+              <span className="font-grotesque text-[12px] uppercase tracking-[0.2em] text-bone-400">
+                {String(open + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+              </span>
+              <button
+                type="button"
+                onClick={() => setOpen(null)}
+                className="font-grotesque text-[12px] uppercase tracking-[0.18em] text-bone-300 transition-colors hover:text-brass-300"
+              >
+                {closeLabel}
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                next();
-              }}
-              className={arrow}
-              aria-label="Next"
-            >
-              ›
-            </button>
-          </div>
 
-          <p className="pb-6 text-center font-grotesque text-[10px] uppercase tracking-[0.22em] text-bone-600 sm:hidden">
-            Swipe to browse
-          </p>
-        </div>,
+            <div className="relative flex flex-1 items-center justify-center gap-4 px-4 pb-8 sm:gap-8 sm:px-8">
+              <button type="button" onClick={(e) => { e.stopPropagation(); prev(); }} className={arrow} aria-label="Previous">
+                ‹
+              </button>
+              <div className="relative h-full w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+                <Image
+                  key={open}
+                  src={images[open]}
+                  alt={`Photography by Charles Raziel — ${open + 1}`}
+                  fill
+                  sizes="90vw"
+                  className="cr-fade object-contain"
+                  priority
+                />
+              </div>
+              <button type="button" onClick={(e) => { e.stopPropagation(); next(); }} className={arrow} aria-label="Next">
+                ›
+              </button>
+            </div>
+
+            <p className="pb-6 text-center font-grotesque text-[10px] uppercase tracking-[0.22em] text-bone-600 sm:hidden">
+              Swipe to browse
+            </p>
+          </div>,
           document.body
         )}
     </>

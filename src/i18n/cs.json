@@ -40,8 +40,10 @@
   "stills": {
     "kicker": "Fotografie",
     "title": "Fotografie",
-    "intro": "Editoriální fotografie z nedávných natáčení.",
-    "note": "Nová galerie se připravuje. Pro kompletní set se mi ozvěte."
+    "intro": "Vybrané soubory prací, seskupené podle projektu a spolupráce.",
+    "viewCollection": "Zobrazit kolekci",
+    "photos": "fotek",
+    "allCollections": "Všechny kolekce"
   },
   "about": {
     "kicker": "Kdo jsem",
